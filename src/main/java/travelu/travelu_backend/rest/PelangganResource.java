@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import travelu.travelu_backend.model.PelangganDTO;
 import travelu.travelu_backend.service.PelangganService;
 import travelu.travelu_backend.util.ReferencedException;
@@ -22,7 +21,6 @@ import travelu.travelu_backend.util.ReferencedWarning;
 
 
 @RestController
-@CrossOrigin(origins = "http://localhost:9000")
 @RequestMapping(value = "/api/pelanggans", produces = MediaType.APPLICATION_JSON_VALUE)
 public class PelangganResource {
 

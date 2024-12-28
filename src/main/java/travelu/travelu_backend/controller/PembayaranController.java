@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import travelu.travelu_backend.domain.InvoicePembayaran;
+import travelu.travelu_backend.model.PaymentMethod;
 import travelu.travelu_backend.model.PembayaranDTO;
 import travelu.travelu_backend.repos.InvoicePembayaranRepository;
 import travelu.travelu_backend.service.PembayaranService;
@@ -35,6 +36,7 @@ public class PembayaranController {
 
     @ModelAttribute
     public void prepareContext(final Model model) {
+        model.addAttribute("metodeValues", PaymentMethod.values());
         model.addAttribute("noInvoiceValues", invoicePembayaranRepository.findAll(Sort.by("noInvoice"))
                 .stream()
                 .collect(CustomCollectors.toSortedMap(InvoicePembayaran::getNoInvoice, InvoicePembayaran::getNoInvoice)));

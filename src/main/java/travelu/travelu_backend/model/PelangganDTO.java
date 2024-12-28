@@ -24,12 +24,12 @@ public class PelangganDTO {
     @Size(max = 255)
     private String password;
 
-    private String role;
-
-
-    private String status;
+    private UserRole role;
 
     @NotNull
     private String noTelp;
+
+    @Size(max = 255)
+    private String img;
 
 }

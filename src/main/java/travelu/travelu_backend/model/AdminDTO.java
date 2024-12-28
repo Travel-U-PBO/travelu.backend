@@ -25,7 +25,7 @@ public class AdminDTO {
     @Size(max = 255)
     private String password;
 
-    private String role;
+    private UserRole role;
 
     private List<Long> listDiskon;
 

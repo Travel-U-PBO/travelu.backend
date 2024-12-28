@@ -16,6 +16,7 @@ import travelu.travelu_backend.domain.Csticket;
 import travelu.travelu_backend.domain.Diskon;
 import travelu.travelu_backend.domain.Jadwal;
 import travelu.travelu_backend.model.AdminDTO;
+import travelu.travelu_backend.model.UserRole;
 import travelu.travelu_backend.repos.ArmadaRepository;
 import travelu.travelu_backend.repos.CsticketRepository;
 import travelu.travelu_backend.repos.DiskonRepository;
@@ -48,6 +49,7 @@ public class AdminController {
 
     @ModelAttribute
     public void prepareContext(final Model model) {
+        model.addAttribute("roleValues", UserRole.values());
         model.addAttribute("listDiskonValues", diskonRepository.findAll(Sort.by("id"))
                 .stream()
                 .collect(CustomCollectors.toSortedMap(Diskon::getId, Diskon::getNama)));

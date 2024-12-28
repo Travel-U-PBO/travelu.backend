@@ -74,6 +74,7 @@ public class CsticketService {
         csticketDTO.setContent(csticket.getContent());
         csticketDTO.setStatus(csticket.getStatus());
         csticketDTO.setTitle(csticket.getTitle());
+        csticketDTO.setResponse(csticket.getResponse());
         csticketDTO.setPemesananId(csticket.getPemesananId() == null ? null : csticket.getPemesananId().getId());
         csticketDTO.setPelangganId(csticket.getPelangganId() == null ? null : csticket.getPelangganId().getId());
         return csticketDTO;
@@ -84,6 +85,7 @@ public class CsticketService {
         csticket.setContent(csticketDTO.getContent());
         csticket.setStatus(csticketDTO.getStatus());
         csticket.setTitle(csticketDTO.getTitle());
+        csticket.setResponse(csticketDTO.getResponse());
         final Pemesanan pemesananId = csticketDTO.getPemesananId() == null ? null : pemesananRepository.findById(csticketDTO.getPemesananId())
                 .orElseThrow(() -> new NotFoundException("pemesananId not found"));
         csticket.setPemesananId(pemesananId);

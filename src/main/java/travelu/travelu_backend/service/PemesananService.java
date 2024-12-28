@@ -85,7 +85,6 @@ public class PemesananService {
     private PemesananDTO mapToDTO(final Pemesanan pemesanan, final PemesananDTO pemesananDTO) {
         pemesananDTO.setId(pemesanan.getId());
         pemesananDTO.setNamaCustomer(pemesanan.getNamaCustomer());
-        pemesananDTO.setDiskon(pemesanan.getDiskon());
         pemesananDTO.setNoTempatduduk(pemesanan.getNoTempatduduk());
         pemesananDTO.setStatusPembayaran(pemesanan.getStatusPembayaran());
         pemesananDTO.setPelangganId(pemesanan.getPelangganId() == null ? null : pemesanan.getPelangganId().getId());
@@ -100,7 +99,6 @@ public class PemesananService {
 
     private Pemesanan mapToEntity(final PemesananDTO pemesananDTO, final Pemesanan pemesanan) {
         pemesanan.setNamaCustomer(pemesananDTO.getNamaCustomer());
-        pemesanan.setDiskon(pemesananDTO.getDiskon());
         pemesanan.setNoTempatduduk(pemesananDTO.getNoTempatduduk());
         pemesanan.setStatusPembayaran(pemesananDTO.getStatusPembayaran());
         final Pelanggan pelangganId = pemesananDTO.getPelangganId() == null ? null : pelangganRepository.findById(pemesananDTO.getPelangganId())

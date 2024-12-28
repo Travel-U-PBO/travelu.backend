@@ -29,11 +29,14 @@ public class Itinerari {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(nullable = false)
     private String title;
 
-    @Column(columnDefinition = "longtext")
+    @Column(nullable = false, columnDefinition = "longtext")
     private String deskripsi;
+
+    @Column
+    private String img;
 
     @ManyToMany
     @JoinTable(

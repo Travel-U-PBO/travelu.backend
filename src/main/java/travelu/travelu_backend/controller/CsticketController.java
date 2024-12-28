@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import travelu.travelu_backend.domain.Pelanggan;
 import travelu.travelu_backend.domain.Pemesanan;
+import travelu.travelu_backend.model.ComplainStatus;
 import travelu.travelu_backend.model.CsticketDTO;
 import travelu.travelu_backend.repos.PelangganRepository;
 import travelu.travelu_backend.repos.PemesananRepository;
@@ -39,6 +40,7 @@ public class CsticketController {
 
     @ModelAttribute
     public void prepareContext(final Model model) {
+        model.addAttribute("statusValues", ComplainStatus.values());
         model.addAttribute("pemesananIdValues", pemesananRepository.findAll(Sort.by("id"))
                 .stream()
                 .collect(CustomCollectors.toSortedMap(Pemesanan::getId, Pemesanan::getNamaCustomer)));

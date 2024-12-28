@@ -17,15 +17,12 @@ public class PemesananDTO {
     @Size(max = 255)
     private String namaCustomer;
 
-    private String diskon;
-
     @NotNull
     @Size(max = 255)
     private String noTempatduduk;
 
     @NotNull
-    @Size(max = 255)
-    private String statusPembayaran;
+    private StatusPembayaran statusPembayaran;
 
     @NotNull
     private Long pelangganId;

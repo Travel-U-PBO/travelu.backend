@@ -66,6 +66,7 @@ public class ItinerariService {
         itinerariDTO.setId(itinerari.getId());
         itinerariDTO.setTitle(itinerari.getTitle());
         itinerariDTO.setDeskripsi(itinerari.getDeskripsi());
+        itinerariDTO.setImg(itinerari.getImg());
         itinerariDTO.setListDestinasi(itinerari.getListDestinasi().stream()
                 .map(destinasiItinerari -> destinasiItinerari.getId())
                 .toList());
@@ -78,6 +79,7 @@ public class ItinerariService {
     private Itinerari mapToEntity(final ItinerariDTO itinerariDTO, final Itinerari itinerari) {
         itinerari.setTitle(itinerariDTO.getTitle());
         itinerari.setDeskripsi(itinerariDTO.getDeskripsi());
+        itinerari.setImg(itinerariDTO.getImg());
         final List<DestinasiItinerari> listDestinasi = destinasiItinerariRepository.findAllById(
                 itinerariDTO.getListDestinasi() == null ? Collections.emptyList() : itinerariDTO.getListDestinasi());
         if (listDestinasi.size() != (itinerariDTO.getListDestinasi() == null ? 0 : itinerariDTO.getListDestinasi().size())) {

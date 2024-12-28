@@ -81,8 +81,8 @@ public class JadwalService {
 
     private JadwalDTO mapToDTO(final Jadwal jadwal, final JadwalDTO jadwalDTO) {
         jadwalDTO.setId(jadwal.getId());
-        jadwalDTO.setTanggal(jadwal.getTanggal());
         jadwalDTO.setWaktu(jadwal.getWaktu());
+        jadwalDTO.setDurasi(jadwal.getDurasi());
         jadwalDTO.setHargaTiket(jadwal.getHargaTiket());
         jadwalDTO.setArmadaId(jadwal.getArmadaId() == null ? null : jadwal.getArmadaId().getId());
         jadwalDTO.setAsalCabangId(jadwal.getAsalCabangId() == null ? null : jadwal.getAsalCabangId().getId());
@@ -91,8 +91,8 @@ public class JadwalService {
     }
 
     private Jadwal mapToEntity(final JadwalDTO jadwalDTO, final Jadwal jadwal) {
-        jadwal.setTanggal(jadwalDTO.getTanggal());
         jadwal.setWaktu(jadwalDTO.getWaktu());
+        jadwal.setDurasi(jadwalDTO.getDurasi());
         jadwal.setHargaTiket(jadwalDTO.getHargaTiket());
         final Armada armadaId = jadwalDTO.getArmadaId() == null ? null : armadaRepository.findById(jadwalDTO.getArmadaId())
                 .orElseThrow(() -> new NotFoundException("armadaId not found"));

@@ -12,8 +12,7 @@ public class PembayaranDTO {
 
     private Long id;
 
-    @Size(max = 255)
-    private String metode;
+    private PaymentMethod metode;
 
     private Double harga;
 

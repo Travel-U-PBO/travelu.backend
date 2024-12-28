@@ -19,10 +19,12 @@ public class CsticketDTO {
     private String content;
 
     @NotNull
-    private Integer status;
+    private ComplainStatus status;
 
     @Size(max = 255)
     private String title;
+
+    private String response;
 
     private Long pemesananId;
 

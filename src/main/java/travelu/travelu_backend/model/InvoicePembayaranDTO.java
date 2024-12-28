@@ -15,7 +15,7 @@ public class InvoicePembayaranDTO {
     private String noInvoice;
 
     @NotNull
-    private Integer status;
+    private StatusPembayaran status;
 
     @NotNull
     private Double harga;

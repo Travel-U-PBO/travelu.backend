@@ -2,6 +2,8 @@ package travelu.travelu_backend.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -12,6 +14,7 @@ import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import travelu.travelu_backend.model.UserRole;
 
 
 @MappedSuperclass
@@ -34,8 +37,9 @@ public abstract class User {
     @Column(nullable = false)
     private String password;
 
-    @Column(name = "\"role\"", columnDefinition = "longtext")
-    private String role;
+    @Column(name = "\"role\"")
+    @Enumerated(EnumType.STRING)
+    private UserRole role;
 
     @CreatedDate
     @Column(nullable = false, updatable = false)

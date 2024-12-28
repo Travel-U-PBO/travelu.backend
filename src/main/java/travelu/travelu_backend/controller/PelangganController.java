@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import travelu.travelu_backend.model.PelangganDTO;
+import travelu.travelu_backend.model.UserRole;
 import travelu.travelu_backend.service.PelangganService;
 import travelu.travelu_backend.util.ReferencedWarning;
 import travelu.travelu_backend.util.WebUtils;
@@ -24,6 +25,11 @@ public class PelangganController {
 
     public PelangganController(final PelangganService pelangganService) {
         this.pelangganService = pelangganService;
+    }
+
+    @ModelAttribute
+    public void prepareContext(final Model model) {
+        model.addAttribute("roleValues", UserRole.values());
     }
 
     @GetMapping

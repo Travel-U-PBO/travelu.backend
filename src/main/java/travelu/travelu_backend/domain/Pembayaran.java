@@ -3,6 +3,8 @@ package travelu.travelu_backend.domain;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,6 +19,7 @@ import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import travelu.travelu_backend.model.PaymentMethod;
 
 
 @Entity
@@ -31,7 +34,8 @@ public class Pembayaran {
     private Long id;
 
     @Column
-    private String metode;
+    @Enumerated(EnumType.STRING)
+    private PaymentMethod metode;
 
     @Column
     private Double harga;

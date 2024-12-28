@@ -37,7 +37,7 @@ public class CabangController {
     public void prepareContext(final Model model) {
         model.addAttribute("kotaIdValues", kotaRepository.findAll(Sort.by("id"))
                 .stream()
-                .collect(CustomCollectors.toSortedMap(Kota::getId, Kota::getId)));
+                .collect(CustomCollectors.toSortedMap(Kota::getId, Kota::getName)));
     }
 
     @GetMapping

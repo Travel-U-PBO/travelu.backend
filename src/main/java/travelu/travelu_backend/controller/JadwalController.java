@@ -44,10 +44,10 @@ public class JadwalController {
                 .collect(CustomCollectors.toSortedMap(Armada::getId, Armada::getPlatNom)));
         model.addAttribute("asalCabangIdValues", cabangRepository.findAll(Sort.by("id"))
                 .stream()
-                .collect(CustomCollectors.toSortedMap(Cabang::getId, Cabang::getId)));
+                .collect(CustomCollectors.toSortedMap(Cabang::getId, Cabang::getName)));
         model.addAttribute("destinasiCabangIdValues", cabangRepository.findAll(Sort.by("id"))
                 .stream()
-                .collect(CustomCollectors.toSortedMap(Cabang::getId, Cabang::getId)));
+                .collect(CustomCollectors.toSortedMap(Cabang::getId, Cabang::getName)));
     }
 
     @GetMapping

@@ -10,7 +10,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import lombok.Getter;
@@ -32,10 +31,10 @@ public class Jadwal {
     private Long id;
 
     @Column(nullable = false)
-    private LocalDate tanggal;
+    private LocalTime waktu;
 
     @Column(nullable = false)
-    private LocalTime waktu;
+    private Integer durasi;
 
     @Column(nullable = false)
     private Integer hargaTiket;
