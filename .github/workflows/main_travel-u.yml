@@ -55,11 +55,9 @@ jobs:
       - name: Debugging Logs
         run: echo "Starting deployment to Azure Web App"
         
-      - name: Deploy to Azure Web App
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v3
-        with:
-        
-          app-name: 'Travel-U'
-          package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}\travelu-backend-0.0.1-SNAPSHOT.jar'
+      - name: 'Deploy to Azure WebApp'
+        uses: azure/webapps-deploy@v2
+        with: 
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/target/*.jar'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_DA4B82693496446C8FAA0EA0E51920DD }}
