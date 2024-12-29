@@ -64,5 +64,5 @@ jobs:
         uses: azure/webapps-deploy@v2
         with: 
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
-          package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/target/*.jar'
+          package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}\travelu-backend-0.0.1-SNAPSHOT.jar'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_DA4B82693496446C8FAA0EA0E51920DD }}
