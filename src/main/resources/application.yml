@@ -35,3 +35,6 @@ error:
       InvoicePembayaranNoInvoiceValid: INVOICE_PEMBAYARAN_NO_INVOICE_VALID
 springdoc:
   pathsToMatch: /api/**
+server:
+  port: ${PORT:8080}
+  address: 0.0.0.0

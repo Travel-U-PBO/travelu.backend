@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title>[[#{home.index.headline}]]</title>
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <h1 class="mb-4">[[#{home.index.headline}]]</h1>
+            <p>[(#{home.index.text})]</p>
+            <p class="mb-5">
+                <span>[[#{home.index.swagger}]]</span>
+                <a th:href="@{/swagger-ui.html}" target="_blank">[[#{home.index.swagger.link}]]</a>.
+            </p>
+            <div class="col-md-4 mb-5">
+                <h4 class="mb-3">[[#{home.index.exploreEntities}]]</h4>
+                <div class="list-group">
+                    <a th:href="@{/admins}" class="list-group-item list-group-item-action">[[#{admin.list.headline}]]</a>
+                    <a th:href="@{/armadas}" class="list-group-item list-group-item-action">[[#{armada.list.headline}]]</a>
+                    <a th:href="@{/cstickets}" class="list-group-item list-group-item-action">[[#{csticket.list.headline}]]</a>
+                    <a th:href="@{/diskons}" class="list-group-item list-group-item-action">[[#{diskon.list.headline}]]</a>
+                    <a th:href="@{/jadwals}" class="list-group-item list-group-item-action">[[#{jadwal.list.headline}]]</a>
+                    <a th:href="@{/pelanggans}" class="list-group-item list-group-item-action">[[#{pelanggan.list.headline}]]</a>
+                    <a th:href="@{/pemesanans}" class="list-group-item list-group-item-action">[[#{pemesanan.list.headline}]]</a>
+                    <a th:href="@{/pembayarans}" class="list-group-item list-group-item-action">[[#{pembayaran.list.headline}]]</a>
+                    <a th:href="@{/bannerImages}" class="list-group-item list-group-item-action">[[#{bannerImage.list.headline}]]</a>
+                    <a th:href="@{/destinasiItineraris}" class="list-group-item list-group-item-action">[[#{destinasiItinerari.list.headline}]]</a>
+                    <a th:href="@{/itineraris}" class="list-group-item list-group-item-action">[[#{itinerari.list.headline}]]</a>
+                    <a th:href="@{/kotas}" class="list-group-item list-group-item-action">[[#{kota.list.headline}]]</a>
+                    <a th:href="@{/cabangs}" class="list-group-item list-group-item-action">[[#{cabang.list.headline}]]</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
