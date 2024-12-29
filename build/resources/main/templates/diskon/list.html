@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title>[[#{diskon.list.headline}]]</title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="d-flex flex-wrap mb-4">
+                <h1 class="flex-grow-1">[[#{diskon.list.headline}]]</h1>
+                <div>
+                    <a th:href="@{/diskons/add}" class="btn btn-primary ms-2">[[#{diskon.list.createNew}]]</a>
+                </div>
+            </div>
+            <div th:if="${diskons.empty}">[[#{diskon.list.empty}]]</div>
+            <div th:if="${!diskons.empty}" class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th scope="col">[[#{diskon.id.label}]]</th>
+                            <th scope="col">[[#{diskon.nama.label}]]</th>
+                            <th scope="col">[[#{diskon.harga.label}]]</th>
+                            <th scope="col">[[#{diskon.percent.label}]]</th>
+                            <th scope="col">[[#{diskon.code.label}]]</th>
+                            <th><!-- --></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="diskon : ${diskons}">
+                            <td>[[${diskon.id}]]</td>
+                            <td>[[${diskon.nama}]]</td>
+                            <td>[[${diskon.harga}]]</td>
+                            <td>[[${diskon.percent}]]</td>
+                            <td>[[${diskon.code}]]</td>
+                            <td>
+                                <div class="float-end text-nowrap">
+                                    <a th:href="@{/diskons/edit/{id}(id=${diskon.id})}" class="btn btn-sm btn-secondary">[[#{diskon.list.edit}]]</a>
+                                    <form th:action="@{/diskons/delete/{id}(id=${diskon.id})}"
+                                            th:data-confirm-message="#{delete.confirm}" method="post" class="js-submit-confirm d-inline">
+                                        <button type="submit" class="btn btn-sm btn-secondary">[[#{diskon.list.delete}]]</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

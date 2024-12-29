@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title>[[#{admin.list.headline}]]</title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="d-flex flex-wrap mb-4">
+                <h1 class="flex-grow-1">[[#{admin.list.headline}]]</h1>
+                <div>
+                    <a th:href="@{/admins/add}" class="btn btn-primary ms-2">[[#{admin.list.createNew}]]</a>
+                </div>
+            </div>
+            <div th:if="${admins.empty}">[[#{admin.list.empty}]]</div>
+            <div th:if="${!admins.empty}" class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th scope="col">[[#{admin.id.label}]]</th>
+                            <th scope="col">[[#{admin.name.label}]]</th>
+                            <th scope="col">[[#{admin.email.label}]]</th>
+                            <th scope="col">[[#{admin.password.label}]]</th>
+                            <th scope="col">[[#{admin.role.label}]]</th>
+                            <th><!-- --></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="admin : ${admins}">
+                            <td>[[${admin.id}]]</td>
+                            <td>[[${admin.name}]]</td>
+                            <td>[[${admin.email}]]</td>
+                            <td>[[${admin.password}]]</td>
+                            <td>[[${admin.role}]]</td>
+                            <td>
+                                <div class="float-end text-nowrap">
+                                    <a th:href="@{/admins/edit/{id}(id=${admin.id})}" class="btn btn-sm btn-secondary">[[#{admin.list.edit}]]</a>
+                                    <form th:action="@{/admins/delete/{id}(id=${admin.id})}"
+                                            th:data-confirm-message="#{delete.confirm}" method="post" class="js-submit-confirm d-inline">
+                                        <button type="submit" class="btn btn-sm btn-secondary">[[#{admin.list.delete}]]</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

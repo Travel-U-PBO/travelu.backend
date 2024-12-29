@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title>[[#{pelanggan.add.headline}]]</title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="d-flex flex-wrap mb-4">
+                <h1 class="flex-grow-1">[[#{pelanggan.add.headline}]]</h1>
+                <div>
+                    <a th:href="@{/pelanggans}" class="btn btn-secondary">[[#{pelanggan.add.back}]]</a>
+                </div>
+            </div>
+            <div th:replace="~{fragments/forms::globalErrors('pelanggan')}" />
+            <form th:action="${requestUri}" method="post" novalidate="">
+                <div th:replace="~{fragments/forms::inputRow(object='pelanggan', field='name', required=true)}" />
+                <div th:replace="~{fragments/forms::inputRow(object='pelanggan', field='email', required=true)}" />
+                <div th:replace="~{fragments/forms::inputRow(object='pelanggan', field='password', required=true)}" />
+                <div th:replace="~{fragments/forms::inputRow(object='pelanggan', field='role', type='radio')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='pelanggan', field='noTelp', required=true, type='textarea')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='pelanggan', field='img')}" />
+                <input type="submit" th:value="#{pelanggan.add.headline}" class="btn btn-primary mt-4" />
+            </form>
+        </div>
+    </body>
+</html>

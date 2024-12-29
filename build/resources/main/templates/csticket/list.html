@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title>[[#{csticket.list.headline}]]</title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="d-flex flex-wrap mb-4">
+                <h1 class="flex-grow-1">[[#{csticket.list.headline}]]</h1>
+                <div>
+                    <a th:href="@{/cstickets/add}" class="btn btn-primary ms-2">[[#{csticket.list.createNew}]]</a>
+                </div>
+            </div>
+            <div th:if="${cstickets.empty}">[[#{csticket.list.empty}]]</div>
+            <div th:if="${!cstickets.empty}" class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th scope="col">[[#{csticket.id.label}]]</th>
+                            <th scope="col">[[#{csticket.rating.label}]]</th>
+                            <th scope="col">[[#{csticket.status.label}]]</th>
+                            <th scope="col">[[#{csticket.title.label}]]</th>
+                            <th scope="col">[[#{csticket.pemesananId.label}]]</th>
+                            <th scope="col">[[#{csticket.pelangganId.label}]]</th>
+                            <th><!-- --></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="csticket : ${cstickets}">
+                            <td>[[${csticket.id}]]</td>
+                            <td>[[${csticket.rating}]]</td>
+                            <td>[[${csticket.status}]]</td>
+                            <td>[[${csticket.title}]]</td>
+                            <td>[[${csticket.pemesananId}]]</td>
+                            <td>[[${csticket.pelangganId}]]</td>
+                            <td>
+                                <div class="float-end text-nowrap">
+                                    <a th:href="@{/cstickets/edit/{id}(id=${csticket.id})}" class="btn btn-sm btn-secondary">[[#{csticket.list.edit}]]</a>
+                                    <form th:action="@{/cstickets/delete/{id}(id=${csticket.id})}"
+                                            th:data-confirm-message="#{delete.confirm}" method="post" class="js-submit-confirm d-inline">
+                                        <button type="submit" class="btn btn-sm btn-secondary">[[#{csticket.list.delete}]]</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
