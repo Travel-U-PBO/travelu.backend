@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title>[[#{csticket.edit.headline}]]</title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="d-flex flex-wrap mb-4">
+                <h1 class="flex-grow-1">[[#{csticket.edit.headline}]]</h1>
+                <div>
+                    <a th:href="@{/cstickets}" class="btn btn-secondary">[[#{csticket.edit.back}]]</a>
+                </div>
+            </div>
+            <div th:replace="~{fragments/forms::globalErrors('csticket')}" />
+            <form th:action="${requestUri}" method="post" novalidate="">
+                <div th:replace="~{fragments/forms::inputRow(object='csticket', field='id', disabled=true, type='number')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='csticket', field='rating', required=true, type='number')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='csticket', field='content', required=true, type='textarea')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='csticket', field='status', required=true, type='radio')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='csticket', field='title')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='csticket', field='response', type='textarea')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='csticket', field='pemesananId', type='select')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='csticket', field='pelangganId', required=true, type='select')}" />
+                <input type="submit" th:value="#{csticket.edit.headline}" class="btn btn-primary mt-4" />
+            </form>
+        </div>
+    </body>
+</html>

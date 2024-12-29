@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title>[[#{jadwal.edit.headline}]]</title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="d-flex flex-wrap mb-4">
+                <h1 class="flex-grow-1">[[#{jadwal.edit.headline}]]</h1>
+                <div>
+                    <a th:href="@{/jadwals}" class="btn btn-secondary">[[#{jadwal.edit.back}]]</a>
+                </div>
+            </div>
+            <div th:replace="~{fragments/forms::globalErrors('jadwal')}" />
+            <form th:action="${requestUri}" method="post" novalidate="">
+                <div th:replace="~{fragments/forms::inputRow(object='jadwal', field='id', disabled=true, type='number')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='jadwal', field='waktu', required=true, inputClass='js-timepicker')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='jadwal', field='durasi', required=true, type='number')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='jadwal', field='hargaTiket', required=true, type='number')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='jadwal', field='armadaId', required=true, type='select')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='jadwal', field='asalCabangId', type='select')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='jadwal', field='destinasiCabangId', type='select')}" />
+                <input type="submit" th:value="#{jadwal.edit.headline}" class="btn btn-primary mt-4" />
+            </form>
+        </div>
+    </body>
+</html>

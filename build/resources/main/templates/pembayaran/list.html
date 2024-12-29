@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title>[[#{pembayaran.list.headline}]]</title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="d-flex flex-wrap mb-4">
+                <h1 class="flex-grow-1">[[#{pembayaran.list.headline}]]</h1>
+                <div>
+                    <a th:href="@{/pembayarans/add}" class="btn btn-primary ms-2">[[#{pembayaran.list.createNew}]]</a>
+                </div>
+            </div>
+            <div th:if="${pembayarans.empty}">[[#{pembayaran.list.empty}]]</div>
+            <div th:if="${!pembayarans.empty}" class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th scope="col">[[#{pembayaran.id.label}]]</th>
+                            <th scope="col">[[#{pembayaran.metode.label}]]</th>
+                            <th scope="col">[[#{pembayaran.harga.label}]]</th>
+                            <th scope="col">[[#{pembayaran.noInvoice.label}]]</th>
+                            <th><!-- --></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="pembayaran : ${pembayarans}">
+                            <td>[[${pembayaran.id}]]</td>
+                            <td>[[${pembayaran.metode}]]</td>
+                            <td>[[${pembayaran.harga}]]</td>
+                            <td>[[${pembayaran.noInvoice}]]</td>
+                            <td>
+                                <div class="float-end text-nowrap">
+                                    <a th:href="@{/pembayarans/edit/{id}(id=${pembayaran.id})}" class="btn btn-sm btn-secondary">[[#{pembayaran.list.edit}]]</a>
+                                    <form th:action="@{/pembayarans/delete/{id}(id=${pembayaran.id})}"
+                                            th:data-confirm-message="#{delete.confirm}" method="post" class="js-submit-confirm d-inline">
+                                        <button type="submit" class="btn btn-sm btn-secondary">[[#{pembayaran.list.delete}]]</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

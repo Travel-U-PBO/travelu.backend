@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title>[[#{jadwal.list.headline}]]</title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="d-flex flex-wrap mb-4">
+                <h1 class="flex-grow-1">[[#{jadwal.list.headline}]]</h1>
+                <div>
+                    <a th:href="@{/jadwals/add}" class="btn btn-primary ms-2">[[#{jadwal.list.createNew}]]</a>
+                </div>
+            </div>
+            <div th:if="${jadwals.empty}">[[#{jadwal.list.empty}]]</div>
+            <div th:if="${!jadwals.empty}" class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th scope="col">[[#{jadwal.id.label}]]</th>
+                            <th scope="col">[[#{jadwal.waktu.label}]]</th>
+                            <th scope="col">[[#{jadwal.durasi.label}]]</th>
+                            <th scope="col">[[#{jadwal.hargaTiket.label}]]</th>
+                            <th scope="col">[[#{jadwal.armadaId.label}]]</th>
+                            <th scope="col">[[#{jadwal.asalCabangId.label}]]</th>
+                            <th scope="col">[[#{jadwal.destinasiCabangId.label}]]</th>
+                            <th><!-- --></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="jadwal : ${jadwals}">
+                            <td>[[${jadwal.id}]]</td>
+                            <td>[[${jadwal.waktu}]]</td>
+                            <td>[[${jadwal.durasi}]]</td>
+                            <td>[[${jadwal.hargaTiket}]]</td>
+                            <td>[[${jadwal.armadaId}]]</td>
+                            <td>[[${jadwal.asalCabangId}]]</td>
+                            <td>[[${jadwal.destinasiCabangId}]]</td>
+                            <td>
+                                <div class="float-end text-nowrap">
+                                    <a th:href="@{/jadwals/edit/{id}(id=${jadwal.id})}" class="btn btn-sm btn-secondary">[[#{jadwal.list.edit}]]</a>
+                                    <form th:action="@{/jadwals/delete/{id}(id=${jadwal.id})}"
+                                            th:data-confirm-message="#{delete.confirm}" method="post" class="js-submit-confirm d-inline">
+                                        <button type="submit" class="btn btn-sm btn-secondary">[[#{jadwal.list.delete}]]</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
