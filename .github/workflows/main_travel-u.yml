@@ -44,8 +44,8 @@ jobs:
         with:
           name: java-app
           
-      - name: Display structure of downloaded files  
-        run: dir
+      - name: Display structure of downloaded files
+        run: dir /s /b *.jar   
         shell: cmd
         
       - name: Deploy to Azure Web App
@@ -55,5 +55,6 @@ jobs:
         
           app-name: 'Travel-U'
           slot-name: 'Production'
-          package: 'travelu-backend-0.0.1-SNAPSHOT.jar'
+          package: '*.jar'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_85999A060F9F453E80BE682A31E3F162 }}
+          startup-command: 'java -jar *.jar'
