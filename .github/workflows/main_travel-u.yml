@@ -25,6 +25,10 @@ jobs:
       - name: Build with Gradle
         run: .\gradlew.bat build
 
+      - name: List JAR files 
+        run: dir /s /b build\libs\*.jar
+        shell: cmd
+        
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
@@ -44,8 +48,8 @@ jobs:
         with:
           name: java-app
           
-      - name: Display structure of downloaded files
-        run: dir /s /b *.jar   
+      - name: List downloaded files  
+        run: dir
         shell: cmd
         
       - name: Deploy to Azure Web App
