@@ -14,7 +14,7 @@
             </div>
             <div th:replace="~{fragments/forms::globalErrors('cabang')}" />
             <form th:action="${requestUri}" method="post" novalidate="">
-                <div th:replace="~{fragments/forms::inputRow(object='cabang', field='name')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='cabang', field='name', required=true)}" />
                 <div th:replace="~{fragments/forms::inputRow(object='cabang', field='kotaId', type='select')}" />
                 <input type="submit" th:value="#{cabang.add.headline}" class="btn btn-primary mt-4" />
             </form>

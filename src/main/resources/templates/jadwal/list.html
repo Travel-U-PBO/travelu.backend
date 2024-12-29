@@ -18,8 +18,8 @@
                     <thead>
                         <tr>
                             <th scope="col">[[#{jadwal.id.label}]]</th>
-                            <th scope="col">[[#{jadwal.tanggal.label}]]</th>
                             <th scope="col">[[#{jadwal.waktu.label}]]</th>
+                            <th scope="col">[[#{jadwal.durasi.label}]]</th>
                             <th scope="col">[[#{jadwal.hargaTiket.label}]]</th>
                             <th scope="col">[[#{jadwal.armadaId.label}]]</th>
                             <th scope="col">[[#{jadwal.asalCabangId.label}]]</th>
@@ -30,8 +30,8 @@
                     <tbody>
                         <tr th:each="jadwal : ${jadwals}">
                             <td>[[${jadwal.id}]]</td>
-                            <td>[[${jadwal.tanggal}]]</td>
                             <td>[[${jadwal.waktu}]]</td>
+                            <td>[[${jadwal.durasi}]]</td>
                             <td>[[${jadwal.hargaTiket}]]</td>
                             <td>[[${jadwal.armadaId}]]</td>
                             <td>[[${jadwal.asalCabangId}]]</td>

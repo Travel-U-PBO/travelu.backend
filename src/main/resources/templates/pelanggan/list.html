@@ -21,6 +21,8 @@
                             <th scope="col">[[#{pelanggan.name.label}]]</th>
                             <th scope="col">[[#{pelanggan.email.label}]]</th>
                             <th scope="col">[[#{pelanggan.password.label}]]</th>
+                            <th scope="col">[[#{pelanggan.role.label}]]</th>
+                            <th scope="col">[[#{pelanggan.img.label}]]</th>
                             <th><!-- --></th>
                         </tr>
                     </thead>
@@ -30,6 +32,8 @@
                             <td>[[${pelanggan.name}]]</td>
                             <td>[[${pelanggan.email}]]</td>
                             <td>[[${pelanggan.password}]]</td>
+                            <td>[[${pelanggan.role}]]</td>
+                            <td>[[${pelanggan.img}]]</td>
                             <td>
                                 <div class="float-end text-nowrap">
                                     <a th:href="@{/pelanggans/edit/{id}(id=${pelanggan.id})}" class="btn btn-sm btn-secondary">[[#{pelanggan.list.edit}]]</a>

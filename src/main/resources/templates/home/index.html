@@ -7,11 +7,11 @@
     </head>
     <body>
         <div layout:fragment="content">
-            <h1 class="mb-4">Selamat Datang di Control Panel Backend Travel-U</h1>
-            <p>Hehe</p>
+            <h1 class="mb-4">[[#{home.index.headline}]]</h1>
+            <p>[(#{home.index.text})]</p>
             <p class="mb-5">
-                <span>API yang terdapat di Backend dapat diakses</span>
-                <a th:href="@{/swagger-ui.html}" target="_blank"> disini</a>.
+                <span>[[#{home.index.swagger}]]</span>
+                <a th:href="@{/swagger-ui.html}" target="_blank">[[#{home.index.swagger.link}]]</a>.
             </p>
             <div class="col-md-4 mb-5">
                 <h4 class="mb-3">[[#{home.index.exploreEntities}]]</h4>

@@ -15,8 +15,8 @@
             <div th:replace="~{fragments/forms::globalErrors('jadwal')}" />
             <form th:action="${requestUri}" method="post" novalidate="">
                 <div th:replace="~{fragments/forms::inputRow(object='jadwal', field='id', disabled=true, type='number')}" />
-                <div th:replace="~{fragments/forms::inputRow(object='jadwal', field='tanggal', required=true, inputClass='js-datepicker')}" />
                 <div th:replace="~{fragments/forms::inputRow(object='jadwal', field='waktu', required=true, inputClass='js-timepicker')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='jadwal', field='durasi', required=true, type='number')}" />
                 <div th:replace="~{fragments/forms::inputRow(object='jadwal', field='hargaTiket', required=true, type='number')}" />
                 <div th:replace="~{fragments/forms::inputRow(object='jadwal', field='armadaId', required=true, type='select')}" />
                 <div th:replace="~{fragments/forms::inputRow(object='jadwal', field='asalCabangId', type='select')}" />

@@ -14,7 +14,7 @@
             </div>
             <div th:replace="~{fragments/forms::globalErrors('kota')}" />
             <form th:action="${requestUri}" method="post" novalidate="">
-                <div th:replace="~{fragments/forms::inputRow(object='kota', field='name')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='kota', field='name', required=true)}" />
                 <input type="submit" th:value="#{kota.add.headline}" class="btn btn-primary mt-4" />
             </form>
         </div>

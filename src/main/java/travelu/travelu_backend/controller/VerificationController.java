@@ -27,15 +27,15 @@ public class VerificationController {
 
     @Autowired
     private PelangganService pelangganService;
-
-    @GetMapping("/verify-email/{email}/{code}")
-    public ResponseEntity<String> verifyEmail(@PathVariable String email, @PathVariable String code, HttpServletResponse response) throws IOException {
-        if (verificationService.verifyCode(email, code)) {
-            pelangganService.updateStatus(email, "VERIFIED");
-            response.sendRedirect("http://localhost:9000/verified");
-            return ResponseEntity.ok("Email verified successfully");
-        } else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid verification code");
-        }
-    }
+//
+//    @GetMapping("/verify-email/{email}/{code}")
+//    public ResponseEntity<String> verifyEmail(@PathVariable String email, @PathVariable String code, HttpServletResponse response) throws IOException {
+//        if (verificationService.verifyCode(email, code)) {
+//            pelangganService.updateStatus(email, "VERIFIED");
+//            response.sendRedirect("http://localhost:9000/verified");
+//            return ResponseEntity.ok("Email verified successfully");
+//        } else {
+//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid verification code");
+//        }
+//    }
 }

@@ -17,8 +17,9 @@
                 <div th:replace="~{fragments/forms::inputRow(object='csticket', field='id', disabled=true, type='number')}" />
                 <div th:replace="~{fragments/forms::inputRow(object='csticket', field='rating', required=true, type='number')}" />
                 <div th:replace="~{fragments/forms::inputRow(object='csticket', field='content', required=true, type='textarea')}" />
-                <div th:replace="~{fragments/forms::inputRow(object='csticket', field='status', required=true, type='number')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='csticket', field='status', required=true, type='radio')}" />
                 <div th:replace="~{fragments/forms::inputRow(object='csticket', field='title')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='csticket', field='response', type='textarea')}" />
                 <div th:replace="~{fragments/forms::inputRow(object='csticket', field='pemesananId', type='select')}" />
                 <div th:replace="~{fragments/forms::inputRow(object='csticket', field='pelangganId', required=true, type='select')}" />
                 <input type="submit" th:value="#{csticket.edit.headline}" class="btn btn-primary mt-4" />

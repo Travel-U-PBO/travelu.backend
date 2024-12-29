@@ -19,6 +19,7 @@
                         <tr>
                             <th scope="col">[[#{itinerari.id.label}]]</th>
                             <th scope="col">[[#{itinerari.title.label}]]</th>
+                            <th scope="col">[[#{itinerari.img.label}]]</th>
                             <th><!-- --></th>
                         </tr>
                     </thead>
@@ -26,6 +27,7 @@
                         <tr th:each="itinerari : ${itineraris}">
                             <td>[[${itinerari.id}]]</td>
                             <td>[[${itinerari.title}]]</td>
+                            <td>[[${itinerari.img}]]</td>
                             <td>
                                 <div class="float-end text-nowrap">
                                     <a th:href="@{/itineraris/edit/{id}(id=${itinerari.id})}" class="btn btn-sm btn-secondary">[[#{itinerari.list.edit}]]</a>

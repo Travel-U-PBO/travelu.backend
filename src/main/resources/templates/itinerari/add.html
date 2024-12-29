@@ -14,8 +14,9 @@
             </div>
             <div th:replace="~{fragments/forms::globalErrors('itinerari')}" />
             <form th:action="${requestUri}" method="post" novalidate="">
-                <div th:replace="~{fragments/forms::inputRow(object='itinerari', field='title')}" />
-                <div th:replace="~{fragments/forms::inputRow(object='itinerari', field='deskripsi', type='textarea')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='itinerari', field='title', required=true)}" />
+                <div th:replace="~{fragments/forms::inputRow(object='itinerari', field='deskripsi', required=true, type='textarea')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='itinerari', field='img')}" />
                 <div th:replace="~{fragments/forms::inputRow(object='itinerari', field='listDestinasi', type='multiselect')}" />
                 <div th:replace="~{fragments/forms::inputRow(object='itinerari', field='listJadwal', type='multiselect')}" />
                 <input type="submit" th:value="#{itinerari.add.headline}" class="btn btn-primary mt-4" />

@@ -16,9 +16,8 @@
             <form th:action="${requestUri}" method="post" novalidate="">
                 <div th:replace="~{fragments/forms::inputRow(object='pemesanan', field='id', disabled=true, type='number')}" />
                 <div th:replace="~{fragments/forms::inputRow(object='pemesanan', field='namaCustomer', required=true)}" />
-                <div th:replace="~{fragments/forms::inputRow(object='pemesanan', field='diskon', type='textarea')}" />
                 <div th:replace="~{fragments/forms::inputRow(object='pemesanan', field='noTempatduduk', required=true)}" />
-                <div th:replace="~{fragments/forms::inputRow(object='pemesanan', field='statusPembayaran', required=true)}" />
+                <div th:replace="~{fragments/forms::inputRow(object='pemesanan', field='statusPembayaran', required=true, type='radio')}" />
                 <div th:replace="~{fragments/forms::inputRow(object='pemesanan', field='pelangganId', required=true, type='select')}" />
                 <div th:replace="~{fragments/forms::inputRow(object='pemesanan', field='pembayaranId', type='select')}" />
                 <div th:replace="~{fragments/forms::inputRow(object='pemesanan', field='noInvoice', type='select')}" />

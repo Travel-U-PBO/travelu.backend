@@ -18,8 +18,9 @@
                 <div th:replace="~{fragments/forms::inputRow(object='pelanggan', field='name', required=true)}" />
                 <div th:replace="~{fragments/forms::inputRow(object='pelanggan', field='email', required=true)}" />
                 <div th:replace="~{fragments/forms::inputRow(object='pelanggan', field='password', required=true)}" />
-                <div th:replace="~{fragments/forms::inputRow(object='pelanggan', field='role', type='textarea')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='pelanggan', field='role', type='radio')}" />
                 <div th:replace="~{fragments/forms::inputRow(object='pelanggan', field='noTelp', required=true, type='textarea')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='pelanggan', field='img')}" />
                 <input type="submit" th:value="#{pelanggan.edit.headline}" class="btn btn-primary mt-4" />
             </form>
         </div>
