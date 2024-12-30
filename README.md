@@ -1,46 +1,36 @@
-# TraveluBackend
+---
+cover: https://gitbookio.github.io/onboarding-template-images/header.png
+coverY: 0
+layout:
+  cover:
+    visible: true
+    size: full
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
 
-This app was created with Bootify.io - tips on working with the code [can be found here](https://bootify.io/next-steps/).
+# Selamat Datang
 
-## Development
+Travel-U merupakan sebuah aplikasi berbasis web yang dirancang untuk memudahkan pengguna dalam merencanakan perjalanan wisata secara efisien dan terorganisir.&#x20;
 
-Update your local database connection in `application.yml` or create your own `application-local.yml` file to override
-settings for development.
 
-During development it is recommended to use the profile `local`. In IntelliJ `-Dspring.profiles.active=local` can be
-added in the VM options of the Run Configuration after enabling this property in "Modify options".
 
-Lombok must be supported by your IDE. For IntelliJ install the Lombok plugin and enable annotation processing -
-[learn more](https://bootify.io/next-steps/spring-boot-with-lombok.html).
+## Apa yang Kami fasilitasi?
 
-After starting the application it is accessible under `localhost:8080`.
+Aplikasi Travel-U memberikan berbagai kemudahan untuk membantu anda merencanakan perjalanan anda.
 
-## Build
+Ada pula fitur yang kami berikan antara lain adalah:
 
-The application can be built using the following command:
-
-```
-gradlew clean build
-```
-
-Start your application with the following command - here with the profile `production`:
-
-```
-java -Dspring.profiles.active=production -jar ./build/libs/travelu-backend-0.0.1-SNAPSHOT.jar
-```
-
-If required, a Docker image can be created with the Spring Boot plugin. Add `SPRING_PROFILES_ACTIVE=production` as
-environment variable when running the container.
-
-```
-gradlew bootBuildImage --imageName=travelu/travelu-backend
-```
-
-## Further readings
-
-* [Gradle user manual](https://docs.gradle.org/)  
-* [Spring Boot reference](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/)  
-* [Spring Data JPA reference](https://docs.spring.io/spring-data/jpa/reference/jpa.html)
-* [Thymeleaf docs](https://www.thymeleaf.org/documentation.html)  
-* [Bootstrap docs](https://getbootstrap.com/docs/5.3/getting-started/introduction/)  
-* [Learn Spring Boot with Thymeleaf](https://www.wimdeblauwe.com/books/taming-thymeleaf/)  
+* **Pemesanan Tiket  -** Membantu anda dalam memesan Tiket untuk bepergian menuju suatu destinasi
+* **Melihat Jadwal Keberangkatan** - Mempermudah dalam melihat Jadwal Keberangkatan yang terdaftar pada waktu tertentu
+* **Rekomendasi Itinerari -** Memberikan&#x20;
+* **Feedback** - Memberikan Masukan lorem Ipsum
+* **Pengingat Jadwal**
