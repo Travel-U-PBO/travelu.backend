@@ -17,14 +17,12 @@ public class JadwalDTO {
     @Schema(type = "string", example = "18:30")
     private LocalTime waktu;
 
-    @NotNull
     private Integer durasi;
 
     @NotNull
     private Integer hargaTiket;
 
-    @NotNull
-    @JadwalArmadaIdUnique
+    private Integer penumpang;
     private Long armadaId;
 
     private Long asalCabangId;

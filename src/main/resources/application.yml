@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: ${JDBC_DATABASE_URL:jdbc:mysql://localhost:3306/db_travelu ?serverTimezone=UTC}
+    url: ${JDBC_DATABASE_URL:jdbc:mysql://localhost:3306/db_travelu?serverTimezone=UTC}
     username: 'root'
     password: ''
     hikari:
@@ -31,7 +31,5 @@ error:
       5xx: ERROR
     codes:
       JadwalArmadaIdUnique: JADWAL_ARMADA_ID_UNIQUE
-      PembayaranNoInvoiceUnique: PEMBAYARAN_NO_INVOICE_UNIQUE
-      InvoicePembayaranNoInvoiceValid: INVOICE_PEMBAYARAN_NO_INVOICE_VALID
 springdoc:
   pathsToMatch: /api/**

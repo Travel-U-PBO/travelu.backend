@@ -18,19 +18,21 @@ public class PemesananDTO {
     private String namaCustomer;
 
     @NotNull
-    @Size(max = 255)
-    private String noTempatduduk;
-
-    @NotNull
     private StatusPembayaran statusPembayaran;
+
+    @Size(max = 255)
+    private String panggilan;
+
+    @Size(max = 255)
+    private String noTelp;
+
+    @Size(max = 255)
+    private String alamat;
 
     @NotNull
     private Long pelangganId;
 
     private Long pembayaranId;
-
-    @Size(max = 255)
-    private String noInvoice;
 
     private List<Long> listDiskon;
 

@@ -12,14 +12,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import travelu.travelu_backend.domain.Diskon;
-import travelu.travelu_backend.domain.InvoicePembayaran;
 import travelu.travelu_backend.domain.Jadwal;
 import travelu.travelu_backend.domain.Pelanggan;
 import travelu.travelu_backend.domain.Pembayaran;
 import travelu.travelu_backend.model.PemesananDTO;
 import travelu.travelu_backend.model.StatusPembayaran;
 import travelu.travelu_backend.repos.DiskonRepository;
-import travelu.travelu_backend.repos.InvoicePembayaranRepository;
 import travelu.travelu_backend.repos.JadwalRepository;
 import travelu.travelu_backend.repos.PelangganRepository;
 import travelu.travelu_backend.repos.PembayaranRepository;
@@ -36,19 +34,16 @@ public class PemesananController {
     private final PemesananService pemesananService;
     private final PelangganRepository pelangganRepository;
     private final PembayaranRepository pembayaranRepository;
-    private final InvoicePembayaranRepository invoicePembayaranRepository;
     private final DiskonRepository diskonRepository;
     private final JadwalRepository jadwalRepository;
 
     public PemesananController(final PemesananService pemesananService,
             final PelangganRepository pelangganRepository,
             final PembayaranRepository pembayaranRepository,
-            final InvoicePembayaranRepository invoicePembayaranRepository,
             final DiskonRepository diskonRepository, final JadwalRepository jadwalRepository) {
         this.pemesananService = pemesananService;
         this.pelangganRepository = pelangganRepository;
         this.pembayaranRepository = pembayaranRepository;
-        this.invoicePembayaranRepository = invoicePembayaranRepository;
         this.diskonRepository = diskonRepository;
         this.jadwalRepository = jadwalRepository;
     }
@@ -62,9 +57,6 @@ public class PemesananController {
         model.addAttribute("pembayaranIdValues", pembayaranRepository.findAll(Sort.by("id"))
                 .stream()
                 .collect(CustomCollectors.toSortedMap(Pembayaran::getId, Pembayaran::getId)));
-        model.addAttribute("noInvoiceValues", invoicePembayaranRepository.findAll(Sort.by("noInvoice"))
-                .stream()
-                .collect(CustomCollectors.toSortedMap(InvoicePembayaran::getNoInvoice, InvoicePembayaran::getNoInvoice)));
         model.addAttribute("listDiskonValues", diskonRepository.findAll(Sort.by("id"))
                 .stream()
                 .collect(CustomCollectors.toSortedMap(Diskon::getId, Diskon::getNama)));

@@ -38,11 +38,17 @@ public class Pemesanan {
     private String namaCustomer;
 
     @Column(nullable = false)
-    private String noTempatduduk;
-
-    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private StatusPembayaran statusPembayaran;
+
+    @Column
+    private String panggilan;
+
+    @Column
+    private String noTelp;
+
+    @Column
+    private String alamat;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pelanggan_id_id", nullable = false)
@@ -51,10 +57,6 @@ public class Pemesanan {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pembayaran_id_id")
     private Pembayaran pembayaranId;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "no_invoice_id")
-    private InvoicePembayaran noInvoice;
 
     @ManyToMany
     @JoinTable(

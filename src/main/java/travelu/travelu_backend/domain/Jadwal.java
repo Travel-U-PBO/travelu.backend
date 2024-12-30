@@ -33,14 +33,17 @@ public class Jadwal {
     @Column(nullable = false)
     private LocalTime waktu;
 
-    @Column(nullable = false)
+    @Column
     private Integer durasi;
 
     @Column(nullable = false)
     private Integer hargaTiket;
 
+    @Column
+    private Integer penumpang;
+
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "armada_id_id", nullable = false, unique = true)
+    @JoinColumn(name = "armada_id_id", unique = true)
     private Armada armadaId;
 
     @ManyToOne(fetch = FetchType.LAZY)

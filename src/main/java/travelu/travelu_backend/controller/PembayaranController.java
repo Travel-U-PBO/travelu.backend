@@ -1,7 +1,6 @@
 package travelu.travelu_backend.controller;
 
 import jakarta.validation.Valid;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,12 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import travelu.travelu_backend.domain.InvoicePembayaran;
 import travelu.travelu_backend.model.PaymentMethod;
 import travelu.travelu_backend.model.PembayaranDTO;
-import travelu.travelu_backend.repos.InvoicePembayaranRepository;
 import travelu.travelu_backend.service.PembayaranService;
-import travelu.travelu_backend.util.CustomCollectors;
 import travelu.travelu_backend.util.ReferencedWarning;
 import travelu.travelu_backend.util.WebUtils;
 
@@ -26,20 +22,14 @@ import travelu.travelu_backend.util.WebUtils;
 public class PembayaranController {
 
     private final PembayaranService pembayaranService;
-    private final InvoicePembayaranRepository invoicePembayaranRepository;
 
-    public PembayaranController(final PembayaranService pembayaranService,
-            final InvoicePembayaranRepository invoicePembayaranRepository) {
+    public PembayaranController(final PembayaranService pembayaranService) {
         this.pembayaranService = pembayaranService;
-        this.invoicePembayaranRepository = invoicePembayaranRepository;
     }
 
     @ModelAttribute
     public void prepareContext(final Model model) {
         model.addAttribute("metodeValues", PaymentMethod.values());
-        model.addAttribute("noInvoiceValues", invoicePembayaranRepository.findAll(Sort.by("noInvoice"))
-                .stream()
-                .collect(CustomCollectors.toSortedMap(InvoicePembayaran::getNoInvoice, InvoicePembayaran::getNoInvoice)));
     }
 
     @GetMapping

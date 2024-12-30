@@ -3,11 +3,9 @@ package travelu.travelu_backend.service;
 import java.util.List;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import travelu.travelu_backend.domain.InvoicePembayaran;
 import travelu.travelu_backend.domain.Pembayaran;
 import travelu.travelu_backend.domain.Pemesanan;
 import travelu.travelu_backend.model.PembayaranDTO;
-import travelu.travelu_backend.repos.InvoicePembayaranRepository;
 import travelu.travelu_backend.repos.PembayaranRepository;
 import travelu.travelu_backend.repos.PemesananRepository;
 import travelu.travelu_backend.util.NotFoundException;
@@ -18,14 +16,11 @@ import travelu.travelu_backend.util.ReferencedWarning;
 public class PembayaranService {
 
     private final PembayaranRepository pembayaranRepository;
-    private final InvoicePembayaranRepository invoicePembayaranRepository;
     private final PemesananRepository pemesananRepository;
 
     public PembayaranService(final PembayaranRepository pembayaranRepository,
-            final InvoicePembayaranRepository invoicePembayaranRepository,
             final PemesananRepository pemesananRepository) {
         this.pembayaranRepository = pembayaranRepository;
-        this.invoicePembayaranRepository = invoicePembayaranRepository;
         this.pemesananRepository = pemesananRepository;
     }
 
@@ -63,21 +58,15 @@ public class PembayaranService {
         pembayaranDTO.setId(pembayaran.getId());
         pembayaranDTO.setMetode(pembayaran.getMetode());
         pembayaranDTO.setHarga(pembayaran.getHarga());
-        pembayaranDTO.setNoInvoice(pembayaran.getNoInvoice() == null ? null : pembayaran.getNoInvoice().getNoInvoice());
+        pembayaranDTO.setNoInvoice(pembayaran.getNoInvoice());
         return pembayaranDTO;
     }
 
     private Pembayaran mapToEntity(final PembayaranDTO pembayaranDTO, final Pembayaran pembayaran) {
         pembayaran.setMetode(pembayaranDTO.getMetode());
         pembayaran.setHarga(pembayaranDTO.getHarga());
-        final InvoicePembayaran noInvoice = pembayaranDTO.getNoInvoice() == null ? null : invoicePembayaranRepository.findById(pembayaranDTO.getNoInvoice())
-                .orElseThrow(() -> new NotFoundException("noInvoice not found"));
-        pembayaran.setNoInvoice(noInvoice);
+        pembayaran.setNoInvoice(pembayaranDTO.getNoInvoice());
         return pembayaran;
-    }
-
-    public boolean noInvoiceExists(final String noInvoice) {
-        return pembayaranRepository.existsByNoInvoiceNoInvoiceIgnoreCase(noInvoice);
     }
 
     public ReferencedWarning getReferencedWarning(final Long id) {

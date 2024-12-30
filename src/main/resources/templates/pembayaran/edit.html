@@ -17,7 +17,7 @@
                 <div th:replace="~{fragments/forms::inputRow(object='pembayaran', field='id', disabled=true, type='number')}" />
                 <div th:replace="~{fragments/forms::inputRow(object='pembayaran', field='metode', type='select')}" />
                 <div th:replace="~{fragments/forms::inputRow(object='pembayaran', field='harga')}" />
-                <div th:replace="~{fragments/forms::inputRow(object='pembayaran', field='noInvoice', required=true, type='select')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='pembayaran', field='noInvoice')}" />
                 <input type="submit" th:value="#{pembayaran.edit.headline}" class="btn btn-primary mt-4" />
             </form>
         </div>

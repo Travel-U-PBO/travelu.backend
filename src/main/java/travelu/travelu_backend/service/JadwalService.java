@@ -84,6 +84,7 @@ public class JadwalService {
         jadwalDTO.setWaktu(jadwal.getWaktu());
         jadwalDTO.setDurasi(jadwal.getDurasi());
         jadwalDTO.setHargaTiket(jadwal.getHargaTiket());
+        jadwalDTO.setPenumpang(jadwal.getPenumpang());
         jadwalDTO.setArmadaId(jadwal.getArmadaId() == null ? null : jadwal.getArmadaId().getId());
         jadwalDTO.setAsalCabangId(jadwal.getAsalCabangId() == null ? null : jadwal.getAsalCabangId().getId());
         jadwalDTO.setDestinasiCabangId(jadwal.getDestinasiCabangId() == null ? null : jadwal.getDestinasiCabangId().getId());
@@ -94,6 +95,7 @@ public class JadwalService {
         jadwal.setWaktu(jadwalDTO.getWaktu());
         jadwal.setDurasi(jadwalDTO.getDurasi());
         jadwal.setHargaTiket(jadwalDTO.getHargaTiket());
+        jadwal.setPenumpang(jadwalDTO.getPenumpang());
         final Armada armadaId = jadwalDTO.getArmadaId() == null ? null : armadaRepository.findById(jadwalDTO.getArmadaId())
                 .orElseThrow(() -> new NotFoundException("armadaId not found"));
         jadwal.setArmadaId(armadaId);

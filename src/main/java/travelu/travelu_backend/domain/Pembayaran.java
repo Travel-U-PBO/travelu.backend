@@ -5,13 +5,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import java.time.OffsetDateTime;
 import java.util.Set;
 import lombok.Getter;
@@ -40,12 +37,11 @@ public class Pembayaran {
     @Column
     private Double harga;
 
+    @Column
+    private String noInvoice;
+
     @OneToMany(mappedBy = "pembayaranId")
     private Set<Pemesanan> listPemesanan;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "no_invoice_id", nullable = false, unique = true)
-    private InvoicePembayaran noInvoice;
 
     @CreatedDate
     @Column(nullable = false, updatable = false)

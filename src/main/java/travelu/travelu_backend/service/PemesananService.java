@@ -8,7 +8,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import travelu.travelu_backend.domain.Csticket;
 import travelu.travelu_backend.domain.Diskon;
-import travelu.travelu_backend.domain.InvoicePembayaran;
 import travelu.travelu_backend.domain.Jadwal;
 import travelu.travelu_backend.domain.Pelanggan;
 import travelu.travelu_backend.domain.Pembayaran;
@@ -16,7 +15,6 @@ import travelu.travelu_backend.domain.Pemesanan;
 import travelu.travelu_backend.model.PemesananDTO;
 import travelu.travelu_backend.repos.CsticketRepository;
 import travelu.travelu_backend.repos.DiskonRepository;
-import travelu.travelu_backend.repos.InvoicePembayaranRepository;
 import travelu.travelu_backend.repos.JadwalRepository;
 import travelu.travelu_backend.repos.PelangganRepository;
 import travelu.travelu_backend.repos.PembayaranRepository;
@@ -32,7 +30,6 @@ public class PemesananService {
     private final PemesananRepository pemesananRepository;
     private final PelangganRepository pelangganRepository;
     private final PembayaranRepository pembayaranRepository;
-    private final InvoicePembayaranRepository invoicePembayaranRepository;
     private final DiskonRepository diskonRepository;
     private final JadwalRepository jadwalRepository;
     private final CsticketRepository csticketRepository;
@@ -40,13 +37,11 @@ public class PemesananService {
     public PemesananService(final PemesananRepository pemesananRepository,
             final PelangganRepository pelangganRepository,
             final PembayaranRepository pembayaranRepository,
-            final InvoicePembayaranRepository invoicePembayaranRepository,
             final DiskonRepository diskonRepository, final JadwalRepository jadwalRepository,
             final CsticketRepository csticketRepository) {
         this.pemesananRepository = pemesananRepository;
         this.pelangganRepository = pelangganRepository;
         this.pembayaranRepository = pembayaranRepository;
-        this.invoicePembayaranRepository = invoicePembayaranRepository;
         this.diskonRepository = diskonRepository;
         this.jadwalRepository = jadwalRepository;
         this.csticketRepository = csticketRepository;
@@ -85,11 +80,12 @@ public class PemesananService {
     private PemesananDTO mapToDTO(final Pemesanan pemesanan, final PemesananDTO pemesananDTO) {
         pemesananDTO.setId(pemesanan.getId());
         pemesananDTO.setNamaCustomer(pemesanan.getNamaCustomer());
-        pemesananDTO.setNoTempatduduk(pemesanan.getNoTempatduduk());
         pemesananDTO.setStatusPembayaran(pemesanan.getStatusPembayaran());
+        pemesananDTO.setPanggilan(pemesanan.getPanggilan());
+        pemesananDTO.setNoTelp(pemesanan.getNoTelp());
+        pemesananDTO.setAlamat(pemesanan.getAlamat());
         pemesananDTO.setPelangganId(pemesanan.getPelangganId() == null ? null : pemesanan.getPelangganId().getId());
         pemesananDTO.setPembayaranId(pemesanan.getPembayaranId() == null ? null : pemesanan.getPembayaranId().getId());
-        pemesananDTO.setNoInvoice(pemesanan.getNoInvoice() == null ? null : pemesanan.getNoInvoice().getNoInvoice());
         pemesananDTO.setListDiskon(pemesanan.getListDiskon().stream()
                 .map(diskon -> diskon.getId())
                 .toList());
@@ -99,17 +95,16 @@ public class PemesananService {
 
     private Pemesanan mapToEntity(final PemesananDTO pemesananDTO, final Pemesanan pemesanan) {
         pemesanan.setNamaCustomer(pemesananDTO.getNamaCustomer());
-        pemesanan.setNoTempatduduk(pemesananDTO.getNoTempatduduk());
         pemesanan.setStatusPembayaran(pemesananDTO.getStatusPembayaran());
+        pemesanan.setPanggilan(pemesananDTO.getPanggilan());
+        pemesanan.setNoTelp(pemesananDTO.getNoTelp());
+        pemesanan.setAlamat(pemesananDTO.getAlamat());
         final Pelanggan pelangganId = pemesananDTO.getPelangganId() == null ? null : pelangganRepository.findById(pemesananDTO.getPelangganId())
                 .orElseThrow(() -> new NotFoundException("pelangganId not found"));
         pemesanan.setPelangganId(pelangganId);
         final Pembayaran pembayaranId = pemesananDTO.getPembayaranId() == null ? null : pembayaranRepository.findById(pemesananDTO.getPembayaranId())
                 .orElseThrow(() -> new NotFoundException("pembayaranId not found"));
         pemesanan.setPembayaranId(pembayaranId);
-        final InvoicePembayaran noInvoice = pemesananDTO.getNoInvoice() == null ? null : invoicePembayaranRepository.findById(pemesananDTO.getNoInvoice())
-                .orElseThrow(() -> new NotFoundException("noInvoice not found"));
-        pemesanan.setNoInvoice(noInvoice);
         final List<Diskon> listDiskon = diskonRepository.findAllById(
                 pemesananDTO.getListDiskon() == null ? Collections.emptyList() : pemesananDTO.getListDiskon());
         if (listDiskon.size() != (pemesananDTO.getListDiskon() == null ? 0 : pemesananDTO.getListDiskon().size())) {
