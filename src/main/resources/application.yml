@@ -33,3 +33,6 @@ error:
       JadwalArmadaIdUnique: JADWAL_ARMADA_ID_UNIQUE
 springdoc:
   pathsToMatch: /api/**
+server:
+  port: ${PORT:8080}
+  address: 0.0.0.0

@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title>[[#{pelanggan.list.headline}]]</title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="d-flex flex-wrap mb-4">
+                <h1 class="flex-grow-1">[[#{pelanggan.list.headline}]]</h1>
+                <div>
+                    <a th:href="@{/pelanggans/add}" class="btn btn-primary ms-2">[[#{pelanggan.list.createNew}]]</a>
+                </div>
+            </div>
+            <div th:if="${pelanggans.empty}">[[#{pelanggan.list.empty}]]</div>
+            <div th:if="${!pelanggans.empty}" class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th scope="col">[[#{pelanggan.id.label}]]</th>
+                            <th scope="col">[[#{pelanggan.name.label}]]</th>
+                            <th scope="col">[[#{pelanggan.email.label}]]</th>
+                            <th scope="col">[[#{pelanggan.password.label}]]</th>
+                            <th scope="col">[[#{pelanggan.role.label}]]</th>
+                            <th scope="col">[[#{pelanggan.img.label}]]</th>
+                            <th><!-- --></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="pelanggan : ${pelanggans}">
+                            <td>[[${pelanggan.id}]]</td>
+                            <td>[[${pelanggan.name}]]</td>
+                            <td>[[${pelanggan.email}]]</td>
+                            <td>[[${pelanggan.password}]]</td>
+                            <td>[[${pelanggan.role}]]</td>
+                            <td>[[${pelanggan.img}]]</td>
+                            <td>
+                                <div class="float-end text-nowrap">
+                                    <a th:href="@{/pelanggans/edit/{id}(id=${pelanggan.id})}" class="btn btn-sm btn-secondary">[[#{pelanggan.list.edit}]]</a>
+                                    <form th:action="@{/pelanggans/delete/{id}(id=${pelanggan.id})}"
+                                            th:data-confirm-message="#{delete.confirm}" method="post" class="js-submit-confirm d-inline">
+                                        <button type="submit" class="btn btn-sm btn-secondary">[[#{pelanggan.list.delete}]]</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

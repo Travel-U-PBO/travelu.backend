@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title>[[#{armada.list.headline}]]</title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="d-flex flex-wrap mb-4">
+                <h1 class="flex-grow-1">[[#{armada.list.headline}]]</h1>
+                <div>
+                    <a th:href="@{/armadas/add}" class="btn btn-primary ms-2">[[#{armada.list.createNew}]]</a>
+                </div>
+            </div>
+            <div th:if="${armadas.empty}">[[#{armada.list.empty}]]</div>
+            <div th:if="${!armadas.empty}" class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th scope="col">[[#{armada.id.label}]]</th>
+                            <th scope="col">[[#{armada.platNom.label}]]</th>
+                            <th><!-- --></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="armada : ${armadas}">
+                            <td>[[${armada.id}]]</td>
+                            <td>[[${armada.platNom}]]</td>
+                            <td>
+                                <div class="float-end text-nowrap">
+                                    <a th:href="@{/armadas/edit/{id}(id=${armada.id})}" class="btn btn-sm btn-secondary">[[#{armada.list.edit}]]</a>
+                                    <form th:action="@{/armadas/delete/{id}(id=${armada.id})}"
+                                            th:data-confirm-message="#{delete.confirm}" method="post" class="js-submit-confirm d-inline">
+                                        <button type="submit" class="btn btn-sm btn-secondary">[[#{armada.list.delete}]]</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
