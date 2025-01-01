@@ -80,7 +80,6 @@ public class PemesananService {
     private PemesananDTO mapToDTO(final Pemesanan pemesanan, final PemesananDTO pemesananDTO) {
         pemesananDTO.setId(pemesanan.getId());
         pemesananDTO.setNamaCustomer(pemesanan.getNamaCustomer());
-        pemesananDTO.setStatusPembayaran(pemesanan.getStatusPembayaran());
         pemesananDTO.setPanggilan(pemesanan.getPanggilan());
         pemesananDTO.setNoTelp(pemesanan.getNoTelp());
         pemesananDTO.setAlamat(pemesanan.getAlamat());
@@ -95,7 +94,6 @@ public class PemesananService {
 
     private Pemesanan mapToEntity(final PemesananDTO pemesananDTO, final Pemesanan pemesanan) {
         pemesanan.setNamaCustomer(pemesananDTO.getNamaCustomer());
-        pemesanan.setStatusPembayaran(pemesananDTO.getStatusPembayaran());
         pemesanan.setPanggilan(pemesananDTO.getPanggilan());
         pemesanan.setNoTelp(pemesananDTO.getNoTelp());
         pemesanan.setAlamat(pemesananDTO.getAlamat());

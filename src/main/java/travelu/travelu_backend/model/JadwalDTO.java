@@ -23,6 +23,8 @@ public class JadwalDTO {
     private Integer hargaTiket;
 
     private Integer penumpang;
+
+    @JadwalArmadaIdUnique
     private Long armadaId;
 
     private Long asalCabangId;

@@ -17,9 +17,6 @@ public class PemesananDTO {
     @Size(max = 255)
     private String namaCustomer;
 
-    @NotNull
-    private StatusPembayaran statusPembayaran;
-
     @Size(max = 255)
     private String panggilan;
 

@@ -19,12 +19,12 @@
                         <tr>
                             <th scope="col">[[#{pemesanan.id.label}]]</th>
                             <th scope="col">[[#{pemesanan.namaCustomer.label}]]</th>
-                            <th scope="col">[[#{pemesanan.statusPembayaran.label}]]</th>
                             <th scope="col">[[#{pemesanan.panggilan.label}]]</th>
                             <th scope="col">[[#{pemesanan.noTelp.label}]]</th>
                             <th scope="col">[[#{pemesanan.alamat.label}]]</th>
                             <th scope="col">[[#{pemesanan.pelangganId.label}]]</th>
                             <th scope="col">[[#{pemesanan.pembayaranId.label}]]</th>
+                            <th scope="col">[[#{pemesanan.jadwalId.label}]]</th>
                             <th><!-- --></th>
                         </tr>
                     </thead>
@@ -32,12 +32,12 @@
                         <tr th:each="pemesanan : ${pemesanans}">
                             <td>[[${pemesanan.id}]]</td>
                             <td>[[${pemesanan.namaCustomer}]]</td>
-                            <td>[[${pemesanan.statusPembayaran}]]</td>
                             <td>[[${pemesanan.panggilan}]]</td>
                             <td>[[${pemesanan.noTelp}]]</td>
                             <td>[[${pemesanan.alamat}]]</td>
                             <td>[[${pemesanan.pelangganId}]]</td>
                             <td>[[${pemesanan.pembayaranId}]]</td>
+                            <td>[[${pemesanan.jadwalId}]]</td>
                             <td>
                                 <div class="float-end text-nowrap">
                                     <a th:href="@{/pemesanans/edit/{id}(id=${pemesanan.id})}" class="btn btn-sm btn-secondary">[[#{pemesanan.list.edit}]]</a>

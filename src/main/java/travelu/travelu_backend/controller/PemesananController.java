@@ -16,7 +16,6 @@ import travelu.travelu_backend.domain.Jadwal;
 import travelu.travelu_backend.domain.Pelanggan;
 import travelu.travelu_backend.domain.Pembayaran;
 import travelu.travelu_backend.model.PemesananDTO;
-import travelu.travelu_backend.model.StatusPembayaran;
 import travelu.travelu_backend.repos.DiskonRepository;
 import travelu.travelu_backend.repos.JadwalRepository;
 import travelu.travelu_backend.repos.PelangganRepository;
@@ -50,7 +49,6 @@ public class PemesananController {
 
     @ModelAttribute
     public void prepareContext(final Model model) {
-        model.addAttribute("statusPembayaranValues", StatusPembayaran.values());
         model.addAttribute("pelangganIdValues", pelangganRepository.findAll(Sort.by("id"))
                 .stream()
                 .collect(CustomCollectors.toSortedMap(Pelanggan::getId, Pelanggan::getName)));

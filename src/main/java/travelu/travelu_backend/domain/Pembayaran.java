@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.util.Set;
 import lombok.Getter;
@@ -17,6 +18,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import travelu.travelu_backend.model.PaymentMethod;
+import travelu.travelu_backend.model.StatusPembayaran;
 
 
 @Entity
@@ -39,6 +41,31 @@ public class Pembayaran {
 
     @Column
     private String noInvoice;
+
+    @Column
+    private String name;
+
+    @Column
+    private String noTelp;
+
+    @Column
+    private String email;
+
+    @Column
+    private String address;
+
+    @Column
+    private String invoice;
+
+    @Column
+    private String vAnumber;
+
+    @Column
+    private LocalDateTime expiredDate;
+
+    @Column
+    @Enumerated(EnumType.STRING)
+    private StatusPembayaran status;
 
     @OneToMany(mappedBy = "pembayaranId")
     private Set<Pemesanan> listPemesanan;

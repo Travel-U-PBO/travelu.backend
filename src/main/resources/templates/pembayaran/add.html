@@ -17,6 +17,14 @@
                 <div th:replace="~{fragments/forms::inputRow(object='pembayaran', field='metode', type='select')}" />
                 <div th:replace="~{fragments/forms::inputRow(object='pembayaran', field='harga')}" />
                 <div th:replace="~{fragments/forms::inputRow(object='pembayaran', field='noInvoice')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='pembayaran', field='name')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='pembayaran', field='noTelp')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='pembayaran', field='email')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='pembayaran', field='address')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='pembayaran', field='invoice')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='pembayaran', field='vAnumber')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='pembayaran', field='expiredDate', inputClass='js-datetimepicker')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='pembayaran', field='status', type='radio')}" />
                 <input type="submit" th:value="#{pembayaran.add.headline}" class="btn btn-primary mt-4" />
             </form>
         </div>

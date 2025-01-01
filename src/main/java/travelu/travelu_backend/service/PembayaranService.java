@@ -59,6 +59,14 @@ public class PembayaranService {
         pembayaranDTO.setMetode(pembayaran.getMetode());
         pembayaranDTO.setHarga(pembayaran.getHarga());
         pembayaranDTO.setNoInvoice(pembayaran.getNoInvoice());
+        pembayaranDTO.setName(pembayaran.getName());
+        pembayaranDTO.setNoTelp(pembayaran.getNoTelp());
+        pembayaranDTO.setEmail(pembayaran.getEmail());
+        pembayaranDTO.setAddress(pembayaran.getAddress());
+        pembayaranDTO.setInvoice(pembayaran.getInvoice());
+        pembayaranDTO.setVAnumber(pembayaran.getVAnumber());
+        pembayaranDTO.setExpiredDate(pembayaran.getExpiredDate());
+        pembayaranDTO.setStatus(pembayaran.getStatus());
         return pembayaranDTO;
     }
 
@@ -66,6 +74,14 @@ public class PembayaranService {
         pembayaran.setMetode(pembayaranDTO.getMetode());
         pembayaran.setHarga(pembayaranDTO.getHarga());
         pembayaran.setNoInvoice(pembayaranDTO.getNoInvoice());
+        pembayaran.setName(pembayaranDTO.getName());
+        pembayaran.setNoTelp(pembayaranDTO.getNoTelp());
+        pembayaran.setEmail(pembayaranDTO.getEmail());
+        pembayaran.setAddress(pembayaranDTO.getAddress());
+        pembayaran.setInvoice(pembayaranDTO.getInvoice());
+        pembayaran.setVAnumber(pembayaranDTO.getVAnumber());
+        pembayaran.setExpiredDate(pembayaranDTO.getExpiredDate());
+        pembayaran.setStatus(pembayaranDTO.getStatus());
         return pembayaran;
     }
 

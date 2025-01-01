@@ -15,11 +15,11 @@
             <div th:replace="~{fragments/forms::globalErrors('pemesanan')}" />
             <form th:action="${requestUri}" method="post" novalidate="">
                 <div th:replace="~{fragments/forms::inputRow(object='pemesanan', field='namaCustomer', required=true)}" />
-                <div th:replace="~{fragments/forms::inputRow(object='pemesanan', field='noTempatduduk', required=true)}" />
-                <div th:replace="~{fragments/forms::inputRow(object='pemesanan', field='statusPembayaran', required=true, type='radio')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='pemesanan', field='panggilan')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='pemesanan', field='noTelp')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='pemesanan', field='alamat')}" />
                 <div th:replace="~{fragments/forms::inputRow(object='pemesanan', field='pelangganId', required=true, type='select')}" />
                 <div th:replace="~{fragments/forms::inputRow(object='pemesanan', field='pembayaranId', type='select')}" />
-                <div th:replace="~{fragments/forms::inputRow(object='pemesanan', field='noInvoice', type='select')}" />
                 <div th:replace="~{fragments/forms::inputRow(object='pemesanan', field='listDiskon', type='multiselect')}" />
                 <div th:replace="~{fragments/forms::inputRow(object='pemesanan', field='jadwalId', required=true, type='select')}" />
                 <input type="submit" th:value="#{pemesanan.add.headline}" class="btn btn-primary mt-4" />
