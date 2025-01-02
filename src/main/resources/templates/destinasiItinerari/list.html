@@ -21,6 +21,7 @@
                             <th scope="col">[[#{destinasiItinerari.name.label}]]</th>
                             <th scope="col">[[#{destinasiItinerari.img.label}]]</th>
                             <th scope="col">[[#{destinasiItinerari.kota.label}]]</th>
+                            <th scope="col">[[#{destinasiItinerari.cabangId.label}]]</th>
                             <th><!-- --></th>
                         </tr>
                     </thead>
@@ -30,6 +31,7 @@
                             <td>[[${destinasiItinerari.name}]]</td>
                             <td>[[${destinasiItinerari.img}]]</td>
                             <td>[[${destinasiItinerari.kota}]]</td>
+                            <td>[[${destinasiItinerari.cabangId}]]</td>
                             <td>
                                 <div class="float-end text-nowrap">
                                     <a th:href="@{/destinasiItineraris/edit/{id}(id=${destinasiItinerari.id})}" class="btn btn-sm btn-secondary">[[#{destinasiItinerari.list.edit}]]</a>

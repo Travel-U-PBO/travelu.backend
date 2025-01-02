@@ -24,4 +24,6 @@ public class DestinasiItinerariDTO {
     @Size(max = 255)
     private String kota;
 
+    private Long cabangId;
+
 }

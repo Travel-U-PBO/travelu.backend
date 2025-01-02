@@ -4,10 +4,12 @@ import java.util.List;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import travelu.travelu_backend.domain.Cabang;
+import travelu.travelu_backend.domain.DestinasiItinerari;
 import travelu.travelu_backend.domain.Jadwal;
 import travelu.travelu_backend.domain.Kota;
 import travelu.travelu_backend.model.CabangDTO;
 import travelu.travelu_backend.repos.CabangRepository;
+import travelu.travelu_backend.repos.DestinasiItinerariRepository;
 import travelu.travelu_backend.repos.JadwalRepository;
 import travelu.travelu_backend.repos.KotaRepository;
 import travelu.travelu_backend.util.NotFoundException;
@@ -20,12 +22,15 @@ public class CabangService {
     private final CabangRepository cabangRepository;
     private final KotaRepository kotaRepository;
     private final JadwalRepository jadwalRepository;
+    private final DestinasiItinerariRepository destinasiItinerariRepository;
 
     public CabangService(final CabangRepository cabangRepository,
-            final KotaRepository kotaRepository, final JadwalRepository jadwalRepository) {
+            final KotaRepository kotaRepository, final JadwalRepository jadwalRepository,
+            final DestinasiItinerariRepository destinasiItinerariRepository) {
         this.cabangRepository = cabangRepository;
         this.kotaRepository = kotaRepository;
         this.jadwalRepository = jadwalRepository;
+        this.destinasiItinerariRepository = destinasiItinerariRepository;
     }
 
     public List<CabangDTO> findAll() {
@@ -87,6 +92,12 @@ public class CabangService {
         if (destinasiCabangIdJadwal != null) {
             referencedWarning.setKey("cabang.jadwal.destinasiCabangId.referenced");
             referencedWarning.addParam(destinasiCabangIdJadwal.getId());
+            return referencedWarning;
+        }
+        final DestinasiItinerari cabangIdDestinasiItinerari = destinasiItinerariRepository.findFirstByCabangId(cabang);
+        if (cabangIdDestinasiItinerari != null) {
+            referencedWarning.setKey("cabang.destinasiItinerari.cabangId.referenced");
+            referencedWarning.addParam(cabangIdDestinasiItinerari.getId());
             return referencedWarning;
         }
         return null;

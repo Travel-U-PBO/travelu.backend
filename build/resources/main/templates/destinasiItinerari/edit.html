@@ -19,6 +19,7 @@
                 <div th:replace="~{fragments/forms::inputRow(object='destinasiItinerari', field='img')}" />
                 <div th:replace="~{fragments/forms::inputRow(object='destinasiItinerari', field='deskripsi', type='textarea')}" />
                 <div th:replace="~{fragments/forms::inputRow(object='destinasiItinerari', field='kota')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='destinasiItinerari', field='cabangId', type='select')}" />
                 <input type="submit" th:value="#{destinasiItinerari.edit.headline}" class="btn btn-primary mt-4" />
             </form>
         </div>

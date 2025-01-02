@@ -52,7 +52,7 @@ public class PembayaranResource {
     public ResponseEntity<Long> updatePembayaran(@PathVariable(name = "id") final Long id,
             @RequestBody @Valid final PembayaranDTO pembayaranDTO) {
         pembayaranService.update(id, pembayaranDTO);
-        return ResponseEntity.ok(id);
+        return ResponseEntity.ok(id);   
     }
 
     @DeleteMapping("/{id}")

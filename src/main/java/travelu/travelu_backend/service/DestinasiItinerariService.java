@@ -4,8 +4,10 @@ import jakarta.transaction.Transactional;
 import java.util.List;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import travelu.travelu_backend.domain.Cabang;
 import travelu.travelu_backend.domain.DestinasiItinerari;
 import travelu.travelu_backend.model.DestinasiItinerariDTO;
+import travelu.travelu_backend.repos.CabangRepository;
 import travelu.travelu_backend.repos.DestinasiItinerariRepository;
 import travelu.travelu_backend.repos.ItinerariRepository;
 import travelu.travelu_backend.util.NotFoundException;
@@ -16,12 +18,15 @@ import travelu.travelu_backend.util.NotFoundException;
 public class DestinasiItinerariService {
 
     private final DestinasiItinerariRepository destinasiItinerariRepository;
+    private final CabangRepository cabangRepository;
     private final ItinerariRepository itinerariRepository;
 
     public DestinasiItinerariService(
             final DestinasiItinerariRepository destinasiItinerariRepository,
+            final CabangRepository cabangRepository,
             final ItinerariRepository itinerariRepository) {
         this.destinasiItinerariRepository = destinasiItinerariRepository;
+        this.cabangRepository = cabangRepository;
         this.itinerariRepository = itinerariRepository;
     }
 
@@ -67,6 +72,7 @@ public class DestinasiItinerariService {
         destinasiItinerariDTO.setImg(destinasiItinerari.getImg());
         destinasiItinerariDTO.setDeskripsi(destinasiItinerari.getDeskripsi());
         destinasiItinerariDTO.setKota(destinasiItinerari.getKota());
+        destinasiItinerariDTO.setCabangId(destinasiItinerari.getCabangId() == null ? null : destinasiItinerari.getCabangId().getId());
         return destinasiItinerariDTO;
     }
 
@@ -76,6 +82,9 @@ public class DestinasiItinerariService {
         destinasiItinerari.setImg(destinasiItinerariDTO.getImg());
         destinasiItinerari.setDeskripsi(destinasiItinerariDTO.getDeskripsi());
         destinasiItinerari.setKota(destinasiItinerariDTO.getKota());
+        final Cabang cabangId = destinasiItinerariDTO.getCabangId() == null ? null : cabangRepository.findById(destinasiItinerariDTO.getCabangId())
+                .orElseThrow(() -> new NotFoundException("cabangId not found"));
+        destinasiItinerari.setCabangId(cabangId);
         return destinasiItinerari;
     }
 
